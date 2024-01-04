@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tamilapp/SocialHuts.dart';
+import 'package:tamilapp/breakfast.dart';
+import 'package:tamilapp/dashboad.dart';
 
 class MyLunch extends StatelessWidget {
   const MyLunch({Key? key});
@@ -103,12 +106,19 @@ class MyLunch extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 100,
+        toolbarHeight: 90,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(16),
+                bottomRight: Radius.circular(16))),
         backgroundColor: Colors.orange,
         leading: IconButton(
           icon: const Icon(CupertinoIcons.back),
           color: const Color.fromARGB(255, 253, 248, 248),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pop();
+            MaterialPageRoute(builder: (context) => SocialHuts());
+          },
         ),
         title: const Text("Lunch & Dinner"),
         centerTitle: true,

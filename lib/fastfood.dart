@@ -85,7 +85,11 @@ class Myfastfood extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 100,
+         toolbarHeight: 90,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(16),
+                bottomRight: Radius.circular(16))),
         backgroundColor: Colors.orange,
         leading: IconButton(
           icon: const Icon(CupertinoIcons.back),

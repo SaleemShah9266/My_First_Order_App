@@ -12,6 +12,11 @@ class DashBoard extends StatelessWidget {
     return Scaffold(
 
       appBar: AppBar(
+         toolbarHeight: 90,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(16),
+                bottomRight: Radius.circular(16))),
         automaticallyImplyLeading: true, //even can remove this line
         backgroundColor: Colors.orange,
         title: const Text("Dashboard"),
