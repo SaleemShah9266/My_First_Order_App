@@ -1,61 +1,66 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart'; // Import CupertinoIcons
-import '';
+import 'package:flutter/cupertino.dart';
+
 class DashBoard extends StatelessWidget {
-  const DashBoard({Key? key}) : super(key: key);
+    const DashBoard({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
 
-
     return Scaffold(
 
-      
       appBar: AppBar(
-                    automaticallyImplyLeading: true, //even can remove this line
-
+        automaticallyImplyLeading: true, //even can remove this line
         backgroundColor: Colors.orange,
-        title: Text("Dashboard"),
+        title: const Text("Dashboard"),
         centerTitle: true,
       ),
-      body: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            colors: [Colors.amber.shade800, Colors.purple.shade600],
+      body: SingleChildScrollView(
+        child: Container(
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              colors: [
+                Color.fromARGB(213, 253, 252, 249),
+                Color.fromARGB(255, 249, 249, 249),
+              ],
+            ),
           ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _buildBreakfastCard(),
-              _buildLunchCard(),
-              _buildDinnerCard(),
-              // Add other cards or widgets here
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                _buildBreakfastCard(),
+                _buildLunchCard(),
+                _buildDinnerCard(
+                   
+                ),
+              ],
+            ),
           ),
         ),
       ),
       drawer: Drawer(
-
         backgroundColor: Colors.orange,
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(
+            const DrawerHeader(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
-                  colors: [Colors.amber.shade800, Colors.purple.shade600],
+                  colors: [Colors.orange, Colors.purple],
                 ),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-///                  Image.asset('assets/images/AAA.png'),
+                  CircleAvatar(
+                    backgroundImage: AssetImage('assets/images/abc.jpeg'),
+                  ),
                   SizedBox(height: 10),
                   Text(
                     'Saleem', // Replace with the user's name
@@ -124,103 +129,105 @@ class DashBoard extends StatelessWidget {
   }
 
   Widget _buildBreakfastCard() {
-    return Card(
-      color: Colors.purple,
-      elevation: 5,
-      margin: EdgeInsets.all(10),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Icon(
-              Icons.free_breakfast,
-              size: 30,
-              color: Colors.white,
-            ),
-            SizedBox(
-              height: 5,
-              width: 30,
-            ),
-            Text(
-              "Breakfast",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+    return SingleChildScrollView(
+      child: Card(
+        color: Colors.orange,
+        elevation: 5,
+        margin: const EdgeInsets.all(10),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Row(
+                children: [
+                  const Expanded(
+                    child: Text(
+                      "Breakfast",
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Image.asset(
+                    'assets/images/axa.png',
+                    width: 50,
+                  ),
+                ],
               ),
-            ),
-            SizedBox(
-              height: 5,
-              width: 30,
-            ),
-            Text(
-              "Start your day with a nutritious meal",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-              ),
-            ),
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Icon(
-                  Icons.arrow_forward,
+              SizedBox(height: 10),
+              const Text(
+                'Delicious dinner with a special description goes here. .',
+                style: TextStyle(
                   color: Colors.white,
+                  fontSize: 14,
                 ),
-              ],
-            ),
-          ],
+              ),
+              SizedBox(height: 10),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Icon(
+                    CupertinoIcons.forward,
+                    color: Colors.white,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
+}
 
-  Widget _buildLunchCard() {
-    return Card(
+Widget _buildLunchCard() {
+  return SingleChildScrollView(
+    child: Card(
       color: Colors.orange,
       elevation: 5,
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Icon(
-              Icons.restaurant_menu,
-              size: 30,
-              color: Colors.white, // Use the same color as Dinner card
-            ),
-            SizedBox(
-              height: 5,
-              width: 30,
-            ),
-            Text(
-              "Lunch",
-              style: TextStyle(
-                color: Colors.white, // Use the same color as Dinner card
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(
-              height: 5,
-              width: 30,
-            ),
-            Text(
-              "Enjoy a delicious midday meal",
-              style: TextStyle(
-                color: Colors.white, // Use the same color as Dinner card
-                fontSize: 16,
-              ),
+            Row(
+              children: [
+                const Expanded(
+                  child: Text(
+                    "Lunch",
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Image.asset(
+                  'assets/images/axa.png',
+                  width: 50,
+                ),
+              ],
             ),
             SizedBox(height: 10),
-            Row(
+            const Text(
+              'Delicious dinner with a special description goes here. .',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 14,
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Icon(
-                  Icons.lock,
+                  CupertinoIcons.forward,
                   color: Colors.white,
                 ),
               ],
@@ -228,60 +235,68 @@ class DashBoard extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 
-  Widget _buildDinnerCard() {
-    return Card(
-      color: Colors.purple,
-      elevation: 5,
-      margin: EdgeInsets.all(10),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Icon(
-              Icons.restaurant,
-              size: 30,
-              color: Colors.white,
-            ),
-            SizedBox(
-              height: 5,
-              width: 30,
-            ),
-            Text(
-              "Dinner",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+Widget _buildDinnerCard() {
+  return SingleChildScrollView(
+    child: Container(
+      child: Card(
+        color: Colors.orange,
+        elevation: 5,
+        margin: EdgeInsets.all(10),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      child: const Text(
+                        "Dinner",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Image.asset(
+                    'assets/images/axa.png',
+                    width: 50,
+                  ),
+                ],
               ),
-            ),
-            SizedBox(
-              height: 5,
-              width: 30,
-            ),
-            Text(
-              "Delight in a satisfying evening meal",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-              ),
-            ),
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Icon(
-                  Icons.arrow_forward,
+              SizedBox(height: 10),
+              Text(
+                'Delicious dinner with a special description goes here. .',
+                style: TextStyle(
                   color: Colors.white,
+                  fontSize: 14,
                 ),
-              ],
-            ),
-          ],
+              ),
+              SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                IconButton(
+  onPressed: () {
+    
+  },
+  icon: Icon(CupertinoIcons.forward),
+)
+
+                ],
+              ),
+            ],
+          ),
         ),
       ),
-    );
-  }
+    ),
+  );
 }

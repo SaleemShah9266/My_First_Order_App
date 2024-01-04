@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tamilapp/dashboad.dart';
+
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({Key? key});
@@ -87,12 +89,11 @@ class SignupScreen extends StatelessWidget {
                       const SizedBox(height: 20),
                       ElevatedButton(
                         onPressed: () {
-                          // Add your signup logic here
-                          // After successful signup, navigate to another screen
+                         
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const SignupScreen(),
+                              builder: (context) =>  DashBoard(),
                             ),
                           );
                         },
